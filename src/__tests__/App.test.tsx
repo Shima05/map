@@ -94,3 +94,39 @@ describe("ElevationForm Component", () => {
     expect(defaultProps.setMapLongitude).toHaveBeenCalledWith(51.389);
   });
 });
+
+describe("API and Error Management Tests", () => {
+  it("displays loading state during API call", async () => {
+    const mockOnGetElevation = vi.fn(
+      () =>
+        new Promise((resolve) =>
+          setTimeout(() => resolve("Elevation data"), 500)
+        )
+    );
+
+    renderComponent({ onGetElevation: mockOnGetElevation, loading: true });
+    const button = screen.getByRole("button", { name: /Loading.../i });
+    expect(button).toBeDisabled();
+    await mockOnGetElevation();
+  });
+
+  it("displays default error message if API fails without specific error", async () => {
+    const mockOnGetElevation = vi.fn(() => Promise.reject());
+
+    const { rerender } = renderComponent({
+      onGetElevation: mockOnGetElevation,
+      error: null,
+    });
+
+    await fireEvent.click(
+      screen.getByRole("button", { name: /Get Elevation/i })
+    );
+
+    rerender(<ElevationForm {...defaultProps} error="Something went wrong" />);
+
+    expect(mockOnGetElevation).toHaveBeenCalled();
+    expect(
+      await screen.findByText(/Something went wrong/i)
+    ).toBeInTheDocument();
+  });
+});

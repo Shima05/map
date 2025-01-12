@@ -21,8 +21,8 @@ interface ClickHandlerProps {
 }
 
 const MapUpdater: React.FC<{
-  latitude: number | null; // Latitude to fly to
-  longitude: number | null; // Longitude to fly to
+  latitude: number | null;
+  longitude: number | null;
 }> = ({ latitude, longitude }) => {
   const map = useMap();
 
@@ -61,7 +61,7 @@ const MapView: React.FC<MapViewProps> = ({
 }) => {
   return (
     <MapContainer
-      center={[latitude || 48.2025, longitude || 16.3556]} // Default center: District 7, Vienna
+      center={[latitude || 48.2025, longitude || 16.3556]} // Default center
       zoom={13}
       style={{ width: "100%", height: "100%" }}
     >

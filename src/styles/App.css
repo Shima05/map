@@ -198,8 +198,8 @@ iframe {
 
   .form-container,
   .map-container {
-    flex: 1 1 auto; /* حذف هرگونه محدودیت عرض */
-    width: 100%; /* تضمین عرض کامل */
+    flex: 1 1 auto;
+    width: 100%;
     min-width: unset;
     height: 30%;
   }
@@ -209,13 +209,13 @@ iframe {
   .app-container {
     flex-direction: column;
     gap: 16px;
-    align-items: stretch; /* اطمینان از اینکه المان‌ها عرض 100% می‌گیرند */
+    align-items: stretch;
   }
 
   .form-container,
   .map-container {
-    flex: 1 1 auto; /* عرض انعطاف‌پذیر */
-    width: 100%; /* تضمین عرض کامل */
+    flex: 1 1 auto;
+    width: 100%;
     min-width: unset;
     height: 30%;
   }

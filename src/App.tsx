@@ -9,8 +9,8 @@ const App: React.FC = () => {
   const [elevation, setElevation] = useState<string>(
     "Elevation data will appear here."
   ); // Elevation data
-  const [loading, setLoading] = useState<boolean>(false); // Loading state
-  const [error, setError] = useState<string | null>(null); // Error message
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Validates latitude or longitude based on its type
   const isValidCoordinate = (value: number, type: "latitude" | "longitude") => {
@@ -52,12 +52,11 @@ const App: React.FC = () => {
       let errorMsg = "";
       if (e instanceof Error) {
         errorMsg = e.message;
-    } else if (typeof e === "string") {
-      errorMsg = e;
-    }
-    console.error("Error fetching elevation data:", errorMsg);
-    setError(errorMsg || "An unexpected error occurred.");
-
+      } else if (typeof e === "string") {
+        errorMsg = e;
+      }
+      console.error("Error fetching elevation data:", errorMsg);
+      setError(errorMsg || "An unexpected error occurred.");
     } finally {
       setLoading(false);
     }
@@ -65,7 +64,6 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      {/* Elevation Form Component */}
       <ElevationForm
         latitude={latitude?.toString() || ""}
         longitude={longitude?.toString() || ""}
@@ -94,7 +92,7 @@ const App: React.FC = () => {
         setMapLatitude={setLatitude}
         setMapLongitude={setLongitude}
       />
-      {/* Map View Component */}
+
       <div className="map-container">
         <MapView
           latitude={latitude}

@@ -71,12 +71,12 @@ const ElevationForm: React.FC<ElevationFormProps> = ({
       <button
         onClick={onGetElevation}
         className="form-button"
-        disabled={loading || !!error} // Disable button if loading or there's an error
+        disabled={loading || !!error} // Disable if loading or there's error
       >
         {loading ? "Loading..." : "Get Elevation"}
       </button>
 
-      {/* Display error message if exists */}
+      {/* Display errors message if exists */}
       {error && (
         <div className="form-error">
           <i className="fas fa-exclamation-circle"></i> {String(error)}
